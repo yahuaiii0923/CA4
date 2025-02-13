@@ -2,14 +2,14 @@ package org.example.DTOs;
 
 import java.util.Date;
 
-public class Expenses {
+public class Expense {
     private int expenseID;
     private String title;
     private String category;
     private double amount;
     private Date dateIncurred;
 
-    public Expenses(int expenseID, String title, String category, double amount, Date dateIncurred) {
+    public Expense(int expenseID, String title, String category, double amount, Date dateIncurred) {
         this.expenseID = expenseID;
         this.title = title;
         this.category = category;
@@ -17,14 +17,14 @@ public class Expenses {
         this.dateIncurred = dateIncurred;
     }
 
-    public Expenses(String title, String category, double amount, Date dateIncurred) {
+    public Expense(String title, String category, double amount, Date dateIncurred) {
         this.title = title;
         this.category = category;
         this.amount = amount;
         this.dateIncurred = dateIncurred;
     }
 
-    public Expenses(){}
+    public Expense(){}
 
     public int getExpenseID() {
         return expenseID;
