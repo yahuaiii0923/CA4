@@ -162,8 +162,8 @@ public class Main {
             System.out.print("Enter year (YYYY): ");
             int year = scanner.nextInt();
 
-            List<Expense> expenses = expenseDao.findExpensesByMonth(month, year);
-            List<Income> incomes = incomeDao.findIncomeByMonth(month, year);
+            List<Expense> expenses = expenseDao.listExpensesByMonth(month, year);
+            List<Income> incomes = incomeDao.listIncomeByMonth(month, year);
 
             double totalExpenses = expenseDao.getTotalExpensesByMonth(month, year);
             double totalIncome = incomeDao.getTotalIncomeByMonth(month, year);
