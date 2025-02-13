@@ -22,6 +22,7 @@ public interface ExpenseDaoInterface {
     // (Optional) Retrieve expenses for a specific month
     List<Expense> listExpensesByMonth(int month, int year) throws DaoException;
 
+    //Calculate total expenses by month
     double getTotalExpensesByMonth(int month, int year) throws DaoException;
 
 
