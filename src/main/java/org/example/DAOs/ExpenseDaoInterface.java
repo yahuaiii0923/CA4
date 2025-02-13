@@ -10,6 +10,9 @@ public interface ExpenseDaoInterface {
     // Retrieve all expenses from the database
     List<Expense> listAllExpenses() throws DaoException;
 
+    //Calculate total expenses
+    double getTotalExpenses() throws DaoException;
+
     // Add a new expense record to the database
     void addExpense(Expense expense) throws DaoException;
 
@@ -18,6 +21,7 @@ public interface ExpenseDaoInterface {
 
     // (Optional) Retrieve expenses for a specific month
     List<Expense> listExpensesByMonth(int month, int year) throws DaoException;
+
 
 
 }
