@@ -6,8 +6,9 @@ import org.example.Exceptions.DaoException;
 import java.util.List;
 
 public interface ExpenseDaoInterface {
+
     // Retrieve all expenses from the database
-    List<Expense> findAllExpenses() throws DaoException;
+    List<Expense> listAllExpenses() throws DaoException;
 
     // Add a new expense record to the database
     void addExpense(Expense expense) throws DaoException;
@@ -16,7 +17,7 @@ public interface ExpenseDaoInterface {
     void deleteExpense(int id) throws DaoException;
 
     // (Optional) Retrieve expenses for a specific month
-    List<Expense> findExpensesByMonth(int month, int year) throws DaoException;
+    List<Expense> listExpensesByMonth(int month, int year) throws DaoException;
 
 
 }
