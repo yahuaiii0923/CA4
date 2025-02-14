@@ -16,7 +16,7 @@ public class Income {
         this.dateEarned = dateEarned;
     }
 
-    public Income(String title, String category, double amount, Date dateEarned){
+    public Income(String title, double amount, Date dateEarned){
         this.title = title;
         this.amount = amount;
         this.dateEarned = dateEarned;
