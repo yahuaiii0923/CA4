@@ -95,7 +95,7 @@ public class Main {
             // Ensure your DTO's constructor matches this format
             Expense newExpense = new Expense(title, category, amount, java.sql.Date.valueOf(date));
             expenseDao.addExpense(newExpense);
-            System.out.println("✅ Expense added successfully!");
+            System.out.println("Expense added successfully!");
         } catch (DaoException e) {
             System.out.println("Error adding expense: " + e.getMessage());
         }
@@ -106,7 +106,7 @@ public class Main {
             System.out.print("Enter expense ID to delete: ");
             int id = scanner.nextInt();
             expenseDao.deleteExpense(id);
-            System.out.println("✅ Expense deleted successfully!");
+            System.out.println("Expense deleted successfully!");
         } catch (DaoException e) {
             System.out.println("Error deleting expense: " + e.getMessage());
         }
@@ -138,7 +138,7 @@ public class Main {
 
             Income newIncome = new Income(title, amount, java.sql.Date.valueOf(date));
             incomeDao.addIncome(newIncome);
-            System.out.println("✅ Income added successfully!");
+            System.out.println("Income added successfully!");
         } catch (DaoException e) {
             System.out.println("Error adding income: " + e.getMessage());
         }
@@ -149,7 +149,7 @@ public class Main {
             System.out.print("Enter income ID to delete: ");
             int id = scanner.nextInt();
             incomeDao.deleteIncome(id);
-            System.out.println("✅ Income deleted successfully!");
+            System.out.println("Income deleted successfully!");
         } catch (DaoException e) {
             System.out.println("Error deleting income: " + e.getMessage());
         }
@@ -181,7 +181,7 @@ public class Main {
             System.out.printf("Total Income: €%.2f\n", totalIncome);
 
             double balance = totalIncome - totalExpenses;
-            System.out.printf("💰 Remaining Balance: €%.2f\n", balance);
+            System.out.printf("Remaining Balance: €%.2f\n", balance);
         } catch (DaoException e) {
             System.out.println("Error retrieving records: " + e.getMessage());
         }

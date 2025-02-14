@@ -175,7 +175,7 @@ public class MySqlExpenseDao extends MySqlDao implements ExpenseDaoInterface {
         try {
             connection = this.getConnection();
 
-            String query = "SELECT * FROM Expense WHERE MONTH(dateSpent) = ? AND YEAR(dateSpent) = ?";
+            String query = "SELECT * FROM Expense WHERE MONTH(dateIncurred) = ? AND YEAR(dateIncurred) = ?";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, month);
             preparedStatement.setInt(2, year);
