@@ -86,14 +86,40 @@ public class Main {
             String title = scanner.nextLine();
             System.out.print("Enter category: ");
             String category = scanner.nextLine();
-            System.out.print("Enter amount: ");
-            double amount = scanner.nextDouble();
-            System.out.print("Enter date incurred (YYYY-MM-DD): ");
-            scanner.nextLine(); // Consume newline
-            String date = scanner.nextLine();
+            double amount = 0.0;
+            boolean validAmount = false;
+            while (!validAmount) {
+                System.out.print("Enter amount: ");
+                if (scanner.hasNextDouble()) {
+                    amount = scanner.nextDouble();
+                    if (amount > 0) {
+                        validAmount = true;
+                    } else {
+                        System.out.println("Amount must be greater than zero. Try again.");
+                    }
+                } else {
+                    System.out.println("Invalid input! Please enter a valid number.");
+                    scanner.next(); // Discard invalid input
+                }
+            }
+
+            java.sql.Date dateIncurred = null;
+            boolean validDate = false;
+
+            scanner.nextLine();
+            while (!validDate) {
+                System.out.print("Enter date incurred (YYYY-MM-DD): ");
+                String dateStr = scanner.nextLine();
+                try {
+                    dateIncurred = java.sql.Date.valueOf(dateStr); // Convert string to SQL date
+                    validDate = true;
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Invalid date format! Please enter a valid date (YYYY-MM-DD).");
+                }
+            }
 
             // Ensure your DTO's constructor matches this format
-            Expense newExpense = new Expense(title, category, amount, java.sql.Date.valueOf(date));
+            Expense newExpense = new Expense(title, category, amount, dateIncurred);
             expenseDao.addExpense(newExpense);
             System.out.println("Expense added successfully!");
         } catch (DaoException e) {
@@ -130,13 +156,40 @@ public class Main {
         try {
             System.out.print("Enter title: ");
             String title = scanner.nextLine();
-            System.out.print("Enter amount: ");
-            double amount = scanner.nextDouble();
-            System.out.print("Enter date earned (YYYY-MM-DD): ");
-            scanner.nextLine(); // Consume newline
-            String date = scanner.nextLine();
+            double amount = 0.0;
+            boolean validAmount = false;
 
-            Income newIncome = new Income(title, amount, java.sql.Date.valueOf(date));
+            while (!validAmount) {
+                System.out.print("Enter amount: ");
+                if (scanner.hasNextDouble()) {
+                    amount = scanner.nextDouble();
+                    if (amount > 0) {
+                        validAmount = true;
+                    } else {
+                        System.out.println("Amount must be greater than zero. Try again.");
+                    }
+                } else {
+                    System.out.println("Invalid input! Please enter a valid number.");
+                    scanner.next(); // Discard invalid input
+                }
+            }
+
+            java.sql.Date dateEarned = null;
+            boolean validDate = false;
+
+            scanner.nextLine(); // Consume newline
+            while (!validDate) {
+                System.out.print("Enter date incurred (YYYY-MM-DD): ");
+                String dateStr = scanner.nextLine();
+                try {
+                    dateEarned = java.sql.Date.valueOf(dateStr); // Convert string to SQL date
+                    validDate = true;
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Invalid date format! Please enter a valid date (YYYY-MM-DD).");
+                }
+            }
+
+            Income newIncome = new Income(title, amount, dateEarned);
             incomeDao.addIncome(newIncome);
             System.out.println("Income added successfully!");
         } catch (DaoException e) {
