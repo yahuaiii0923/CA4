@@ -102,7 +102,7 @@ public class MySqlIncomeDao extends MySqlDao implements IncomeDaoInterface {
 
             preparedStatement.setString(1, income.getTitle());
             preparedStatement.setDouble(2, income.getAmount());
-            preparedStatement.setDate(4,  new java.sql.Date(income.getDateEarned().getTime()));
+            preparedStatement.setDate(3,  new java.sql.Date(income.getDateEarned().getTime()));
 
 
             preparedStatement.executeUpdate();

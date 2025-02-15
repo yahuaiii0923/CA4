@@ -98,12 +98,12 @@ public class MySqlExpenseDao extends MySqlDao implements ExpenseDaoInterface {
         try {
             connection = this.getConnection();
 
-            String query = "INSERT INTO Expense (title, category, amount, dateIncurred) VALUES (?, ?, ?)";
+            String query = "INSERT INTO Expense (title, category, amount, dateIncurred) VALUES (?, ?, ?, ?)";
             preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
             preparedStatement.setString(1, expense.getTitle());
-            preparedStatement.setDouble(2, expense.getAmount());
-            preparedStatement.setString(3, expense.getCategory());
+            preparedStatement.setString(2, expense.getCategory());
+            preparedStatement.setDouble(3, expense.getAmount());
             preparedStatement.setDate(4,  new java.sql.Date(expense.getDateIncurred().getTime()));
 
 
