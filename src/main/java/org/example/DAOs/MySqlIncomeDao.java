@@ -62,7 +62,7 @@ public class MySqlIncomeDao extends MySqlDao implements IncomeDaoInterface {
 
         try {
             connection = this.getConnection();
-            String query = "SELECT SUM(amount) AS total FROM Income";
+            String query = "SELECT SUM AS total FROM Income";
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
 
@@ -97,7 +97,7 @@ public class MySqlIncomeDao extends MySqlDao implements IncomeDaoInterface {
         try {
             connection = this.getConnection();
 
-            String query = "INSERT INTO Income (title, amount, dateEarned) VALUES (?, ?, ?)";
+            String query = "INSERT INTO Income VALUES (?, ?, ?)";
             preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
             preparedStatement.setString(1, income.getTitle());
@@ -173,7 +173,7 @@ public class MySqlIncomeDao extends MySqlDao implements IncomeDaoInterface {
         try {
             connection = this.getConnection();
 
-            String query = "SELECT * FROM Income WHERE MONTH(dateEarned) = ? AND YEAR(dateEarned) = ?";
+            String query = "SELECT * FROM Income WHERE MONTH = ? AND YEAR = ?";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, month);
             preparedStatement.setInt(2, year);

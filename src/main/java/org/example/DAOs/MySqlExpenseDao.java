@@ -51,7 +51,7 @@ public class MySqlExpenseDao extends MySqlDao implements ExpenseDaoInterface {
                 System.err.println("Error closing resources: " + e.getMessage());
             }
         }
-        return expenseList; // may be empty
+        return expenseList;
     }
 
     @Override
@@ -175,7 +175,7 @@ public class MySqlExpenseDao extends MySqlDao implements ExpenseDaoInterface {
         try {
             connection = this.getConnection();
 
-            String query = "SELECT * FROM Expense WHERE MONTH(dateIncurred) = ? AND YEAR(dateIncurred) = ?";
+            String query = "SELECT * FROM Expense WHERE MONTH = ? AND YEAR = ?";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, month);
             preparedStatement.setInt(2, year);
@@ -208,7 +208,7 @@ public class MySqlExpenseDao extends MySqlDao implements ExpenseDaoInterface {
                 System.err.println("Error closing resources: " + e.getMessage());
             }
         }
-        return expenseList; // may be empty
+        return expenseList;
     }
 
     @Override
@@ -220,7 +220,7 @@ public class MySqlExpenseDao extends MySqlDao implements ExpenseDaoInterface {
 
         try {
             connection = this.getConnection();
-            String query = "SELECT SUM(amount) AS total FROM Expense WHERE MONTH(dateIncurred) = ? AND YEAR(dateIncurred) = ?";
+            String query = "SELECT SUM AS total FROM Expense WHERE MONTH = ? AND YEAR = ?";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, month);
             preparedStatement.setInt(2, year);
