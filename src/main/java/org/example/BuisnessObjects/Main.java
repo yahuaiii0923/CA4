@@ -30,8 +30,25 @@ public class Main {
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
 
-            int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            int choice = -1;
+            boolean validChoice = false;
+
+
+            while (!validChoice) {
+                if (scanner.hasNextInt()) {
+                    choice = scanner.nextInt();
+                    if (choice >= 0 && choice <= 7) {
+                        validChoice = true; // Valid choice
+                    } else {
+                        System.out.println("Invalid choice! Please enter a number between 0 and 7.");
+                    }
+                } else {
+                    System.out.println("Invalid input! Please enter a number.");
+                    scanner.next(); // Discard invalid input
+                }
+            }
+
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
